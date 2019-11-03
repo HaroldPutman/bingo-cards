@@ -1,0 +1,27 @@
+{
+  "name": "bingo-card",
+  "version": "1.0.0",
+  "description": "Builds an interactive Bingo Card",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaroldPutman/bingo-cards.git"
+  },
+  "keywords": [
+    "games",
+    "bingo"
+  ],
+  "author": "Harold Putman <h.putman@ieee.org>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HaroldPutman/bingo-cards/issues"
+  },
+  "homepage": "https://github.com/HaroldPutman/bingo-cards#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
