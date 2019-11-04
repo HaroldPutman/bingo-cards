@@ -16,6 +16,16 @@ function fillBoard(clues) {
   });
 }
 
+function explodeHeading(el) {
+  const text = el.innerText;
+  el.innerText = '';
+  for (let i = 0 ; i < text.length; i++) {
+    const span = document.createElement('span');
+    span.innerText = text[i];
+    el.appendChild(span);
+  }
+}
+
 function ready() {
   const searchParams = new URLSearchParams(window.location.search);
   let cluefile = 'film-tropes.json'
@@ -31,6 +41,8 @@ function ready() {
     shuffle(clues);
     fillBoard(clues);
   };
+  const head = document.querySelector('.card h1');
+  explodeHeading(head);
   const cells = document.querySelectorAll('.board div');
   cells.forEach((cell) => {
     cell.addEventListener('click', function(event) {

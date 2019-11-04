@@ -4,7 +4,7 @@
   margin:auto;
 }
 
-.header {
+.card h1 {
   display: grid;
   width: 100%;
   font-size: 20px;
@@ -15,8 +15,9 @@
   font-family: 'Nunito', sans-serif;
 }
 
-.header div {
+.card h1 span {
   text-align: center;
+  text-transform: uppercase;
   background-color: black;
   color: white;
 }
