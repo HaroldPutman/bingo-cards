@@ -8,12 +8,18 @@ function shuffle(array) {
 }
 
 function fillBoard(clues) {
-  const cells = document.querySelectorAll('.board > div');
-  cells.forEach((cell, index) => {
+  const board = document.querySelector('.board');
+  for (let i = 0; i < 25; i++) {
+    const cell = document.createElement('div');
     const div = document.createElement('div');
-    div.innerText = clues[index];
+    div.innerText = clues[i];
     cell.appendChild(div);
-  });
+    cell.addEventListener('click', function(event) {
+      console.log('click');
+      this.classList.toggle('marked');
+    });
+    board.appendChild(cell);
+  }
 }
 
 function explodeHeading(el) {
@@ -43,13 +49,6 @@ function ready() {
   };
   const head = document.querySelector('.card h1');
   explodeHeading(head);
-  const cells = document.querySelectorAll('.board div');
-  cells.forEach((cell) => {
-    cell.addEventListener('click', function(event) {
-      console.log('click');
-      this.classList.toggle('marked');
-    });
-  });
 }
 
 if (document.readyState != 'loading') {
