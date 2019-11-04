@@ -1,3 +1,9 @@
+.card {
+  position: relative;
+  max-width: 600px;
+  margin:auto;
+}
+
 .header {
   display: grid;
   width: 100%;
@@ -28,6 +34,7 @@
   justify-content: center;
   border: 1px solid silver;
   text-align: center;
+  min-height: 4em;
 }
 .board .marked {
   background-color: red;

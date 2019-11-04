@@ -8,17 +8,12 @@ function shuffle(array) {
 }
 
 function fillBoard(clues) {
-  for (let i = 0; i < 25; i++) {
-    let row = Math.floor(i / 5) + 1;
-    let colno = i % 5;
-    let col = "BINGO".substring(colno, colno + 1);
-    let cell = document.getElementById(col+row);
-    if (cell) {
-      const div = document.createElement('div');
-      div.innerText = clues[i];
-      cell.appendChild(div);
-    }
-  }
+  const cells = document.querySelectorAll('.board > div');
+  cells.forEach((cell, index) => {
+    const div = document.createElement('div');
+    div.innerText = clues[index];
+    cell.appendChild(div);
+  });
 }
 
 function ready() {
@@ -37,12 +32,12 @@ function ready() {
     fillBoard(clues);
   };
   const cells = document.querySelectorAll('.board div');
-  for (const cell of cells) {
+  cells.forEach((cell) => {
     cell.addEventListener('click', function(event) {
       console.log('click');
       this.classList.toggle('marked');
     });
-  }
+  });
 }
 
 if (document.readyState != 'loading') {
