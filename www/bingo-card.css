@@ -38,6 +38,10 @@
   min-height: 4em;
 }
 .board .marked {
-  background-color: red;
+  background-image: url('daub.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
 

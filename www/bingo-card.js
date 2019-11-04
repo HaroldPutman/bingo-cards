@@ -15,8 +15,10 @@ function fillBoard(clues) {
     div.innerText = clues[i];
     cell.appendChild(div);
     cell.addEventListener('click', function(event) {
-      console.log('click');
       this.classList.toggle('marked');
+      const rect = event.target.getBoundingClientRect();
+      const offset = (event.clientX - rect.left) / rect.width;
+      this.style.backgroundPositionX = (offset * 100)+'%';
     });
     board.appendChild(cell);
   }
