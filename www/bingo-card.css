@@ -10,7 +10,7 @@
   font-size: 20px;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1.5em;
-  grid-gap: 1px;
+  grid-gap: 2px;
   margin-bottom: 2px;
   font-family: 'Nunito', sans-serif;
 }
@@ -21,6 +21,7 @@
   background-color: black;
   color: white;
 }
+
 .board {
   display: grid;
   width: 100%;
@@ -29,14 +30,16 @@
   grid-gap: 1px;
   font-family: 'BenchNine', sans-serif;
 }
+
 .board > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   border: 1px solid silver;
   text-align: center;
-  min-height: 4em;
+  min-height: 5.3em;
 }
+
 .board .marked {
   background-image: url('daub.jpg');
   background-size: contain;
@@ -44,4 +47,33 @@
   background-position: center;
 }
 
+.controls {
+  padding-top: 2em;
+}
 
+.controls button {
+  border: none;
+  border-radius: 2px;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #0277BD;
+  text-align: center;
+  letter-spacing: .5px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  font-family: 'Nunito', sans-serif;
+}
+
+.controls button:hover {
+  background-color: #01579B;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
+}
+
+.controls button:active {
+  background-color: #0091EA;
+}
