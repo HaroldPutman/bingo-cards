@@ -2,9 +2,10 @@
   "name": "bingo-card",
   "version": "1.0.0",
   "description": "Builds an interactive Bingo Card",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index",
+    "start": "node server",
+    "deploy": "gsutil rsync -r www gs://www.bingocard.me",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/HaroldPutman/bingo-cards/issues"
   },
-  "homepage": "https://github.com/HaroldPutman/bingo-cards#readme",
+  "homepage": "http://www.bingocard.me",
   "dependencies": {
     "express": "^4.17.1"
   }
