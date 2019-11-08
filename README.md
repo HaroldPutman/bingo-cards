@@ -1,14 +1,34 @@
 # Bingo Card
 
+A bingo game made for use while watching schmaltzy Christmas movies.
+It is easily extended to other domains by adding new prompts.
+
 ## Quickstart
 
-To test this locally: `npm start` then visit [localhost:3000](http://localhost:3000).
+### To test this locally:
 
-To deploy to production: `npm run deploy`
+* Clone the repo and install it.
 
-## Setup
-
+```sh
+git clone git@github.com:HaroldPutman/bingo-cards.git
+npm install
 ```
+
+* Start the local server with `npm start`.
+* Visit [localhost:3000](http://localhost:3000).
+
+### Deploy to web
+
+When you are ready to deploy to Google Cloud Storage:
+
+* Set up and connect to your GCP account and project
+
+```sh
 gcloud auth login
 gcloud config set project bingo-card-257920
 ```
+
+* Deploy the site with : `npm run deploy`
+
+
+
