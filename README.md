@@ -30,5 +30,7 @@ gcloud config set project bingo-card-257920
 
 * Deploy the site with : `npm run deploy`
 
+## Credits
 
+Thanks to people who have contributed to the [film-tropes](www/film-tropes.json): Mary Stockert, Rebecca Putman, Walter Francis
 
