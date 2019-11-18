@@ -1,3 +1,8 @@
+function trackEvent(action, data) {
+  if (typeof gtag === 'function') {
+    gtag('event', action, data);
+  }
+}
 /**
  * Shuffles the contents of an array.
  * @param {Array} array
@@ -48,7 +53,12 @@ function buildHeading() {
  * @param {Object} event The click event.
  */
 function clickCell(event) {
-  this.classList.toggle('marked');
+  const  marked = this.classList.toggle('marked');
+  if (marked) {
+    trackEvent('mark', {
+      value: event.target.innerText
+    });
+  }
   const rect = event.target.getBoundingClientRect();
   const offset = (event.clientX - rect.left) / rect.width;
   this.style.backgroundPositionX = (offset * 100)+'%';
@@ -96,6 +106,7 @@ function loadBoard(cluefile) {
     const clues = JSON.parse(req.responseText);
     shuffle(clues);
     clues[12] = 'FREE';
+    trackEvent('load', { value: cluefile });
     fillCells(clues.map((text) => {
       return {
         t: text,
@@ -120,6 +131,7 @@ function populateBoard(cluefile) {
   if (!saved || (age > 7200)) {
     loadBoard(cluefile);
   } else {
+    trackEvent('restore', { value: age });
     fillCells(JSON.parse(saved));
   }
 }
@@ -139,6 +151,7 @@ function ready() {
   buildHeading();
   const resetButton = document.querySelector('.controls .reset');
   resetButton.addEventListener('click', (event)=> {
+    trackEvent('reset', { event_category: 'user' });
     loadBoard(cluefile);
   })
   window.addEventListener('unload', (event) => {
