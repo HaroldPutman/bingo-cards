@@ -56,6 +56,7 @@ function clickCell(event) {
   const  marked = this.classList.toggle('marked');
   if (marked) {
     trackEvent('mark', {
+      event_category: 'user',
       value: event.target.innerText
     });
   }
