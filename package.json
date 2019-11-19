@@ -4,8 +4,10 @@
   "description": "Builds an interactive Bingo Card",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "deploy": "gsutil rsync -r www gs://www.bingocard.me",
+    "start": "npm run build && node server",
+    "scss": "node-sass src/sass/ -o www/css --output-style=compressed --source-map=true",
+    "build": "npm run scss",
+    "deploy": "npm run build && gsutil rsync -r www gs://www.bingocard.me",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,5 +26,8 @@
   "homepage": "http://www.bingocard.me",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "node-sass": "^4.13.0"
   }
 }
