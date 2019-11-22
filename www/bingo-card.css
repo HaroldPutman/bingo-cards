@@ -48,6 +48,10 @@
   background-position: center;
 }
 
+.board .bingo {
+  border-color: red;
+}
+
 .controls {
   padding-top: 1em;
 }

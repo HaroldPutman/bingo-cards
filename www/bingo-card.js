@@ -17,6 +17,63 @@ function shuffle(array) {
 }
 
 /**
+ * Checks for Bingo on the board by scanning for patterns.
+ * @param {Number} board A binary representation of the current
+ * state of the board.
+ * @returns {Array} An array of the found bingo patterns.
+ */
+function findBingos(board) {
+  const bingos = [];
+  const row0 = parseInt('1111100000000000000000000', 2);
+  const col0 = parseInt('1000010000100001000010000', 2);
+  const leftDiag = parseInt('1000001000001000001000001', 2);
+  const rightDiag = parseInt('0000100010001000100010000', 2);
+  if ((board & leftDiag) === leftDiag) {
+    bingos.push(leftDiag);
+  }
+  if ((board & rightDiag) === rightDiag) {
+    bingos.push(rightDiag);
+  }
+  for (let r = 0; r < 25; r += 5) {
+    let row = row0 >> r;
+    if ((board & row) === row) {
+      bingos.push(row);
+    }
+  }
+  for (let c = 0; c < 5; c += 1) {
+    let col = col0 >> c;
+    if ((board & col) === col) {
+      bingos.push(col);
+    }
+  }
+  return bingos;
+}
+
+/**
+ * Checks the board for a bingo. If there is one it will
+ * mark the cells involved.
+ * @returns {Number} The number of bingos found.
+ */
+function checkForBingo() {
+  const cells = document.querySelectorAll('.board > div');
+  const board = Array.from(cells).reduce((acc, el) => {
+    acc = (acc << 1) | (el.classList.contains('marked') ? 1 : 0);
+    return acc;
+  }, 0);
+  const bingos = findBingos(board);
+  bingos.forEach((mask) => {
+    let currentBit = parseInt('1000000000000000000000000', 2);
+    Array.from(cells).forEach((el) => {
+      if (mask & currentBit) {
+        el.classList.add('bingo');
+      }
+      currentBit >>= 1;
+    });
+  });
+  return bingos.length;
+}
+
+/**
  * Stores the state of the board so that it can
  * survive a browser refresh. Because this can happen
  * on iOS when you switch apps and come back to Safari.
@@ -60,6 +117,7 @@ function clickCell(event) {
       value: event.target.innerText
     });
   }
+  const bingos = checkForBingo();
   const rect = event.target.getBoundingClientRect();
   const offset = (event.clientX - rect.left) / rect.width;
   this.style.backgroundPositionX = (offset * 100)+'%';
