@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "build": "mkdir www/foo & echo test > www/foo/test.txt",
+    "build": "pwd > www/test.txt",
     "deploy": "gsutil rsync -r www gs://www.bingocard.me",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
