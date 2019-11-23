@@ -52,6 +52,10 @@
   border-color: red;
 }
 
+.card h1 span.bingo {
+  background-color: red;
+}
+
 .controls {
   padding-top: 1em;
 }

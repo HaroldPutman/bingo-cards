@@ -50,26 +50,60 @@ function findBingos(board) {
 }
 
 /**
+ * Turns the board into a single number. Each bit representing the
+ * state of a cell.
+ * @return {Number} The digitized board.
+ */
+function digitizeBoard() {
+  return Array.from(document.querySelectorAll('.board > div'))
+    .reduce((acc, el) => {
+      acc = (acc << 1) | (el.classList.contains('marked') ? 1 : 0);
+      return acc;
+    }, 0);
+}
+
+/**
+ * Clear the bingo states.
+ */
+function clearBingos() {
+  Array.from(document.querySelectorAll('.bingo')).forEach((el) => {
+    el.classList.remove('bingo');
+  });
+}
+
+/**
+ * Mark all the bingos on the board.
+ * @param {Array} bingos An array of zero or more bingo combinations.
+ */
+function markBingos(bingos) {
+  bingos.forEach((mask) => {
+    let currentBit = parseInt('1000000000000000000000000', 2);
+    Array.from(document.querySelectorAll('.board > div'))
+      .forEach((el) => {
+        if (mask & currentBit) {
+          el.classList.add('bingo');
+        }
+        currentBit >>= 1;
+      });
+  });
+  if (bingos.length) {
+    Array.from(document.querySelectorAll('.card h1 span'))
+      .forEach((el) =>{
+        el.classList.add('bingo');
+      });
+  }
+}
+
+/**
  * Checks the board for a bingo. If there is one it will
  * mark the cells involved.
  * @returns {Number} The number of bingos found.
  */
 function checkForBingo() {
-  const cells = document.querySelectorAll('.board > div');
-  const board = Array.from(cells).reduce((acc, el) => {
-    acc = (acc << 1) | (el.classList.contains('marked') ? 1 : 0);
-    return acc;
-  }, 0);
+  clearBingos();
+  const board = digitizeBoard();
   const bingos = findBingos(board);
-  bingos.forEach((mask) => {
-    let currentBit = parseInt('1000000000000000000000000', 2);
-    Array.from(cells).forEach((el) => {
-      if (mask & currentBit) {
-        el.classList.add('bingo');
-      }
-      currentBit >>= 1;
-    });
-  });
+  markBingos(bingos);
   return bingos.length;
 }
 
@@ -211,6 +245,7 @@ function ready() {
   const resetButton = document.querySelector('.controls .reset');
   resetButton.addEventListener('click', (event)=> {
     trackEvent('reset', { event_category: 'user' });
+    clearBingos();
     loadBoard(cluefile);
   })
   window.addEventListener('unload', (event) => {
