@@ -30,6 +30,15 @@ gcloud config set project bingo-card-257920
 
 * Deploy the site with : `npm run deploy`
 
+## Prompts
+
+You can create your own prompts in a JSON file. The default is [film-tropes](www/film-tropes.json).
+This is designed for use while viewing shmaltzy Christmas movies.
+You can specify another file in a URL parameter `cluefile=` (name to change).
+
+In the prompt file, Long words can be marked for hyphenation using [soft hyphens](https://en.wikipedia.org/wiki/Soft_hyphen)
+`\U00AD`. This will cause the word to break when needed on small screens.
+
 ## Credits
 
 Thanks to people who have contributed to the [film-tropes](www/film-tropes.json): Mary Stockert, Rebecca Putman, Walter Francis
