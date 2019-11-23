@@ -1,8 +1,14 @@
+/**
+ * Tracks an event to Analytics.
+ * @param {String} action The action name.
+ * @param {Object} data The tag data.
+ */
 function trackEvent(action, data) {
   if (typeof gtag === 'function') {
     gtag('event', action, data);
   }
 }
+
 /**
  * Shuffles the contents of an array.
  * @param {Array} array
@@ -87,10 +93,8 @@ function markBingos(bingos) {
       });
   });
   if (bingos.length) {
-    Array.from(document.querySelectorAll('.card h1 span'))
-      .forEach((el) =>{
-        el.classList.add('bingo');
-      });
+    const h1 = document.querySelector('.card h1');
+    h1.classList.add('bingo');
   }
 }
 
@@ -226,6 +230,7 @@ function populateBoard(cluefile) {
   } else {
     trackEvent('restore', { value: age });
     fillCells(JSON.parse(saved));
+    checkForBingo();
   }
 }
 

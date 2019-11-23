@@ -60,8 +60,7 @@
   100% { background-color: #000; }
 }
 
-.card h1 span.bingo {
-  animation: bingo-flash 0.2s 5;
+.card h1.bingo span {
   background-color: #4a5;
 }
 
