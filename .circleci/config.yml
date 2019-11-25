@@ -55,10 +55,9 @@ jobs:
         # Must be absolute path or relative path from working_directory
             at: ~/repo
         - run: |
-            echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --project ${GOOGLE_PROJECT_ID} --key-file=-
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
-            gsutil rsync -m -r www gs://www.bingocard.me
+            gsutil rsync -r www gs://www.bingocard.me
 
 workflows:
   version: 2
