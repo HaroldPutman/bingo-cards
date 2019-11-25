@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node server",
     "build": "pwd > www/test.txt",
-    "deploy": "gsutil rsync -r www gs://www.bingocard.me",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
