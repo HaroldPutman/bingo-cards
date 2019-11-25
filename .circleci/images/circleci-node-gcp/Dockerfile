@@ -14,5 +14,10 @@ RUN curl -sSL https://sdk.cloud.google.com > $GTMP && bash $GTMP --install-dir=$
   \
   && chown -Rf circleci:circleci $CCI
 
+# install crcmod (gsutil help crcmod)
+RUN sudo apt-get install gcc python-dev python-setuptools
+RUN sudo easy_install pip
+RUN sudo sh -c 'pip uninstall crcmod && pip install --no-cache-dir -U crcmod'
+
 # change back to the user in the FROM image
 USER circleci

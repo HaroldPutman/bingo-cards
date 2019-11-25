@@ -7,7 +7,7 @@ version: 2.1
 executors:
   node-gcp:
     docker:
-      - image: haroldputman/circleci-node-gcp:0.0.1
+      - image: haroldputman/circleci-node-gcp:0.0.2
     working_directory: ~/repo
 
 jobs:
@@ -31,7 +31,7 @@ jobs:
           root: ~/repo
           # Must be relative path from root
           paths:
-            - www
+            - www/*
 
   deploy:
     executor: node-gcp
@@ -39,7 +39,7 @@ jobs:
         - attach_workspace:
             at: ~/repo/www
         - run: pwd
-        - run: ls -al
+        - run: ls -aRl
         - run: |
             echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --project ${GOOGLE_PROJECT_ID} --key-file=-
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
