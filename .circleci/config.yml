@@ -33,16 +33,15 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
       - run: npm run build
 
       - persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
           # taken to be the root directory of the workspace.
-          root: ~/repo
+          root: .
           # Must be relative path from root
           paths:
-            - www
+            - www/*
 
   deploy:
     docker:
@@ -53,13 +52,13 @@ jobs:
     steps:
         - attach_workspace:
         # Must be absolute path or relative path from working_directory
-            at: ~/repo
+            at: ~/repo/workspace
         - run: |
             pwd
-            ls ~/repo
+            ls ~/repo/workspace
             echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --project ${GOOGLE_PROJECT_ID} --key-file=-
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
-            gsutil rsync -r ~/repo gs://www.bingocard.me
+            gsutil rsync -r ~/repo/workspace gs://www.bingocard.me
 
 workflows:
   version: 2
