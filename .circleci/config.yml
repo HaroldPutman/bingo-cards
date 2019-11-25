@@ -44,21 +44,21 @@ jobs:
           paths:
             - www
 
-    deploy:
-      docker:
-        - image: google/cloud-sdk
+  deploy:
+    docker:
+      - image: google/cloud-sdk
 
-      working_directory: ~/repo
+    working_directory: ~/repo
 
-      steps:
-          - attach_workspace:
-          # Must be absolute path or relative path from working_directory
-              at: ~/repo
-          - run: |
-              echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-              gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
-              gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
-              gsutil rsync -m -r www gs://www.bingocard.me
+    steps:
+        - attach_workspace:
+        # Must be absolute path or relative path from working_directory
+            at: ~/repo
+        - run: |
+            echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+            gsutil rsync -m -r www gs://www.bingocard.me
 
 workflows:
   version: 2
