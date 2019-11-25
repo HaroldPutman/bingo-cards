@@ -5,7 +5,7 @@ It is easily extended to other domains by adding new prompts.
 
 ## Quickstart
 
-### To test this locally:
+### Test locally
 
 * Clone the repo and install it.
 
@@ -17,18 +17,18 @@ npm install
 * Start the local server with `npm start`.
 * Visit [localhost:3000](http://localhost:3000).
 
-### Deploy to web
+### Setting up CircleCI
 
-When you are ready to deploy to Google Cloud Storage:
+I am using [CircleCI](https://circleci.com/) to deploy to the web. When changes are
+merged into master they will be automatically deployed.
 
-* Set up and connect to your GCP account and project
+The [current configuration](.circleci/config.yml) is set up to deploy to Google Cloud
+Storage. There are some environment variables that must be set in your Circle CI
+environment:
 
-```sh
-gcloud auth login
-gcloud config set project bingo-card-257920
-```
-
-* Deploy the site with : `npm run deploy`
+* `GCLOUD_SERVICE_KEY` Create a service user in GCP Console and set the key here. It's JSON data.
+* `GOOGLE_COMPUTE_ZONE` The Google Compute zone (us-east1)
+* `GOOGLE_PROJECT_ID` The Project ID.
 
 ## Prompts
 
@@ -41,5 +41,6 @@ In the prompt file, Long words can be marked for hyphenation using [soft hyphens
 
 ## Credits
 
-Thanks to people who have contributed to the [film-tropes](www/film-tropes.json): Mary Stockert, Rebecca Putman, Walter Francis
-
+Thanks to people who have contributed to the [film-tropes](www/film-tropes.json):
+Mary Stockert, Rebecca Putman, Walter Francis. Thanks also to Cary Hazelwood who
+helped with Sass/CSS and other good ideas.

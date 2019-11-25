@@ -1,0 +1,59 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+
+executors:
+  node-gcp:
+    docker:
+      - image: haroldputman/circleci-node-gcp:0.0.2
+    working_directory: ~/repo
+
+jobs:
+  build:
+    executor: node-gcp
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm install
+      - run: ls -al . www
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm run build
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
+          # taken to be the root directory of the workspace.
+          root: ~/repo
+          # Must be relative path from root
+          paths:
+            - www/*
+
+  deploy:
+    executor: node-gcp
+    steps:
+        - attach_workspace:
+            at: ~/repo
+        - run: pwd
+        - run: ls -aRl
+        - run: |
+            echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --project ${GOOGLE_PROJECT_ID} --key-file=-
+            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+            gsutil rsync -r ~/repo/www gs://www.bingocard.me
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+              - build
+          filters:
+            branches:
+              only: master
