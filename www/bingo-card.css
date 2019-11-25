@@ -48,6 +48,22 @@
   background-position: center;
 }
 
+.board .bingo {
+  background-image: url('daub2.jpg');
+}
+
+@keyframes bingo-flash {
+  0%   { background-color: #000; }
+  20% { background-color: #253; }
+  40% { background-color: #4a5; }
+  70% { background-color: #253; }
+  100% { background-color: #000; }
+}
+
+.card h1.bingo span {
+  background-color: #4a5;
+}
+
 .controls {
   padding-top: 1em;
 }

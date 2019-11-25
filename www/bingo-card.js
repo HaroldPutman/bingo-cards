@@ -1,8 +1,14 @@
+/**
+ * Tracks an event to Analytics.
+ * @param {String} action The action name.
+ * @param {Object} data The tag data.
+ */
 function trackEvent(action, data) {
   if (typeof gtag === 'function') {
     gtag('event', action, data);
   }
 }
+
 /**
  * Shuffles the contents of an array.
  * @param {Array} array
@@ -14,6 +20,95 @@ function shuffle(array) {
     array[j] = array[i];
     array[i] = temp;
   }
+}
+
+/**
+ * Checks for Bingo on the board by scanning for patterns.
+ * @param {Number} board A binary representation of the current
+ * state of the board.
+ * @returns {Array} An array of the found bingo patterns.
+ */
+function findBingos(board) {
+  const bingos = [];
+  const row0 = parseInt('1111100000000000000000000', 2);
+  const col0 = parseInt('1000010000100001000010000', 2);
+  const leftDiag = parseInt('1000001000001000001000001', 2);
+  const rightDiag = parseInt('0000100010001000100010000', 2);
+  if ((board & leftDiag) === leftDiag) {
+    bingos.push(leftDiag);
+  }
+  if ((board & rightDiag) === rightDiag) {
+    bingos.push(rightDiag);
+  }
+  for (let r = 0; r < 25; r += 5) {
+    let row = row0 >> r;
+    if ((board & row) === row) {
+      bingos.push(row);
+    }
+  }
+  for (let c = 0; c < 5; c += 1) {
+    let col = col0 >> c;
+    if ((board & col) === col) {
+      bingos.push(col);
+    }
+  }
+  return bingos;
+}
+
+/**
+ * Turns the board into a single number. Each bit representing the
+ * state of a cell.
+ * @return {Number} The digitized board.
+ */
+function digitizeBoard() {
+  return Array.from(document.querySelectorAll('.board > div'))
+    .reduce((acc, el) => {
+      acc = (acc << 1) | (el.classList.contains('marked') ? 1 : 0);
+      return acc;
+    }, 0);
+}
+
+/**
+ * Clear the bingo states.
+ */
+function clearBingos() {
+  Array.from(document.querySelectorAll('.bingo')).forEach((el) => {
+    el.classList.remove('bingo');
+  });
+}
+
+/**
+ * Mark all the bingos on the board.
+ * @param {Array} bingos An array of zero or more bingo combinations.
+ */
+function markBingos(bingos) {
+  bingos.forEach((mask) => {
+    let currentBit = parseInt('1000000000000000000000000', 2);
+    Array.from(document.querySelectorAll('.board > div'))
+      .forEach((el) => {
+        if (mask & currentBit) {
+          el.classList.add('bingo');
+        }
+        currentBit >>= 1;
+      });
+  });
+  if (bingos.length) {
+    const h1 = document.querySelector('.card h1');
+    h1.classList.add('bingo');
+  }
+}
+
+/**
+ * Checks the board for a bingo. If there is one it will
+ * mark the cells involved.
+ * @returns {Number} The number of bingos found.
+ */
+function checkForBingo() {
+  clearBingos();
+  const board = digitizeBoard();
+  const bingos = findBingos(board);
+  markBingos(bingos);
+  return bingos.length;
 }
 
 /**
@@ -60,6 +155,7 @@ function clickCell(event) {
       value: event.target.innerText
     });
   }
+  const bingos = checkForBingo();
   const rect = event.target.getBoundingClientRect();
   const offset = (event.clientX - rect.left) / rect.width;
   this.style.backgroundPositionX = (offset * 100)+'%';
@@ -134,6 +230,7 @@ function populateBoard(cluefile) {
   } else {
     trackEvent('restore', { value: age });
     fillCells(JSON.parse(saved));
+    checkForBingo();
   }
 }
 
@@ -153,6 +250,7 @@ function ready() {
   const resetButton = document.querySelector('.controls .reset');
   resetButton.addEventListener('click', (event)=> {
     trackEvent('reset', { event_category: 'user' });
+    clearBingos();
     loadBoard(cluefile);
   })
   window.addEventListener('unload', (event) => {
