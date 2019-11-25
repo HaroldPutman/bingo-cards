@@ -55,15 +55,15 @@ jobs:
         - attach_workspace:
         # Must be absolute path or relative path from working_directory
             at: ~/repo/workspace
+        - run: pwd
+        - run: ls -al
         - run: |
-            pwd
-            ls ~/repo/workspace
             echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --project ${GOOGLE_PROJECT_ID} --key-file=-
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
             gsutil rsync -r ~/repo/workspace gs://www.bingocard.me
 
         - run: |
-            if [[ `cat /tmp/workspace/echo-output` == "Hello, world!" ]]; then
+            if [[ `cat ~/repo/workspace/echo-output` == "Hello, world!" ]]; then
               echo "It worked!";
             fi
 
