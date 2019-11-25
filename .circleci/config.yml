@@ -34,14 +34,16 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: npm run build
+      - run: mkdir -p workspace
+      - run: echo "Hello, world!" > workspace/echo-output
 
       - persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
           # taken to be the root directory of the workspace.
-          root: .
+          root: workspace
           # Must be relative path from root
           paths:
-            - www/*
+            - echo-output
 
   deploy:
     docker:
@@ -59,6 +61,13 @@ jobs:
             echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --project ${GOOGLE_PROJECT_ID} --key-file=-
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
             gsutil rsync -r ~/repo/workspace gs://www.bingocard.me
+
+        - run: |
+          if [[ `cat /tmp/workspace/echo-output` == "Hello, world!" ]]; then
+            echo "It worked!";
+          else
+            echo "Nope!"; exit 1
+          fi
 
 workflows:
   version: 2
