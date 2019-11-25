@@ -26,21 +26,19 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run build
-      - run: mkdir -p workspace
-      - run: echo "Hello, world!" > workspace/echo-output
       - persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
           # taken to be the root directory of the workspace.
-          root: workspace
+          root: ~/repo
           # Must be relative path from root
           paths:
-            - echo-output
+            - www/*
 
   deploy:
     executor: node-gcp
     steps:
         - attach_workspace:
-            at: ~/repo/workspace
+            at: ~/repo
         - run: pwd
         - run: ls -aRl
         - run: |
@@ -53,4 +51,6 @@ workflows:
   build_and_deploy:
     jobs:
       - build
-      - deploy
+      - deploy:
+          requires:
+              - build
