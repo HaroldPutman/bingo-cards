@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "build": "pwd > www/test.txt",
+    "build:js": "terser src/app.js -o www/js/app.min.js -c -m --source-map \"root='http://localhost:3000', url='/js/app.min.js.map'\"",
+    "build": "npm run build:js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +24,7 @@
   },
   "homepage": "http://www.bingocard.me",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "terser": "^4.4.0"
   }
 }
