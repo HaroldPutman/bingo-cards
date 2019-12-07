@@ -9,13 +9,16 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="75.702774mm"
-   height="75.702782mm"
-   viewBox="0 0 75.702774 75.702782"
+   width="75.40625mm"
+   height="75.40625mm"
+   viewBox="0 0 75.40625 75.40625"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   sodipodi:docname="bingo.svg">
+   sodipodi:docname="bingo.svg"
+   inkscape:export-filename="/Users/haputman/Documents/Personal/dev/bingo-card/www/images/icons-16.png"
+   inkscape:export-xdpi="5.3899999"
+   inkscape:export-ydpi="5.3899999">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,14 +28,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="-227.52193"
-     inkscape:cy="2.2909349"
+     inkscape:zoom="1.1809764"
+     inkscape:cx="66.55286"
+     inkscape:cy="168.88439"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1440"
-     inkscape:window-height="855"
+     inkscape:window-width="1920"
+     inkscape:window-height="1035"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
@@ -69,57 +72,45 @@
        inkscape:export-xdpi="60.389999"
        inkscape:export-ydpi="60.389999" />
     <g
-       id="g864"
-       transform="translate(19.885838,206.15508)"
-       inkscape:export-filename="/Users/haputman/Documents/Personal/dev/bingo-card/www/images/icons-180.png"
-       inkscape:export-xdpi="60.389999"
-       inkscape:export-ydpi="60.389999">
+       id="g872">
       <rect
          transform="scale(1,-1)"
-         y="60.035957"
-         x="54.430458"
-         height="75.142418"
+         y="-145.72702"
+         x="74.316299"
+         height="74.750305"
          width="14.817417"
          id="rect815-7"
-         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#0d0d0d;stroke-width:0.5291667;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#0d0d0d;stroke-width:0.52778423;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <rect
          transform="scale(1,-1)"
-         y="60.03595"
-         x="24.795624"
-         height="75.142418"
+         y="-145.64554"
+         x="44.681461"
+         height="74.668823"
          width="14.817417"
          id="rect815-7-9"
-         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#0d0d0d;stroke-width:0.5291667;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#0d0d0d;stroke-width:0.52749652;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     </g>
-    <g
-       id="g864-8"
-       transform="rotate(90,-45.949017,15.413294)"
-       style="fill:none"
-       inkscape:export-filename="/Users/haputman/Documents/Personal/dev/bingo-card/www/images/icons-180.png"
-       inkscape:export-xdpi="60.389999"
-       inkscape:export-ydpi="60.389999">
-      <rect
-         transform="scale(1,-1)"
-         y="60.035957"
-         x="54.430458"
-         height="75.142418"
-         width="14.817417"
-         id="rect815-7-0"
-         style="opacity:1;fill:none;fill-opacity:1;stroke:#0d0d0d;stroke-width:0.5291667;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-      <rect
-         transform="scale(1,-1)"
-         y="60.03595"
-         x="24.795624"
-         height="75.142418"
-         width="14.817417"
-         id="rect815-7-9-2"
-         style="opacity:1;fill:none;fill-opacity:1;stroke:#0d0d0d;stroke-width:0.5291667;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    </g>
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#0d0d0d;stroke-width:0.5275256;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect815-7-0"
+       width="14.819058"
+       height="74.6688"
+       x="115.79195"
+       y="29.499414"
+       transform="matrix(0,1,1,0,0,0)" />
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#0d0d0d;stroke-width:0.5275256;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect815-7-9-2"
+       width="14.819058"
+       height="74.6688"
+       x="86.157112"
+       y="29.499407"
+       transform="matrix(0,1,1,0,0,0)" />
     <circle
        style="opacity:1;fill:#ee166b;fill-opacity:1;stroke:none;stroke-width:0.3712177;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path887"
-       cx="37.211754"
-       cy="78.366135"
+       cx="36.567822"
+       cy="93.566643"
        r="5.1593752"
        inkscape:export-filename="/Users/haputman/Documents/Personal/dev/bingo-card/www/images/icons-180.png"
        inkscape:export-xdpi="60.389999"
@@ -127,8 +118,8 @@
     <circle
        style="opacity:1;fill:#ee166b;fill-opacity:1;stroke:none;stroke-width:0.3712177;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path887-4"
-       cx="51.933929"
-       cy="92.89286"
+       cx="51.45536"
+       cy="93.566643"
        r="5.1593752"
        inkscape:export-filename="/Users/haputman/Documents/Personal/dev/bingo-card/www/images/icons-180.png"
        inkscape:export-xdpi="60.389999"
@@ -136,8 +127,8 @@
     <circle
        style="opacity:1;fill:#ee166b;fill-opacity:1;stroke:none;stroke-width:0.3712177;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path887-4-8"
-       cx="66.523811"
-       cy="107.78512"
+       cx="66.87207"
+       cy="78.302979"
        r="5.1593752"
        inkscape:export-filename="/Users/haputman/Documents/Personal/dev/bingo-card/www/images/icons-180.png"
        inkscape:export-xdpi="60.389999"
@@ -145,8 +136,8 @@
     <circle
        style="opacity:1;fill:#ee166b;fill-opacity:1;stroke:none;stroke-width:0.3712177;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path887-4-8-3"
-       cx="81.64286"
-       cy="122.90417"
+       cx="81.230446"
+       cy="93.566643"
        r="5.1593752"
        inkscape:export-filename="/Users/haputman/Documents/Personal/dev/bingo-card/www/images/icons-180.png"
        inkscape:export-xdpi="60.389999"
@@ -154,11 +145,17 @@
     <circle
        style="opacity:1;fill:#ee166b;fill-opacity:1;stroke:none;stroke-width:0.3712177;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path887-4-8-3-9"
-       cx="96.761909"
-       cy="138.25"
+       cx="96.117981"
+       cy="93.566643"
        r="5.1593752"
        inkscape:export-filename="/Users/haputman/Documents/Personal/dev/bingo-card/www/images/icons-180.png"
        inkscape:export-xdpi="60.389999"
        inkscape:export-ydpi="60.389999" />
+    <path
+       style="opacity:0.46799999;fill:#ee166b;fill-opacity:1;stroke:#ee166b;stroke-width:1;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 36.535169,100.86333 8.06536,8.40142 6.889163,-8.40142 7.934668,8.40142 7.467931,-23.187913 7.355901,23.187913 7.150546,-8.40142 7.673285,8.40142 7.281238,-8.2894 -4.032681,23.97205 H 41.239962 Z"
+       id="rect865"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccc" />
   </g>
 </svg>
