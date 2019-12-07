@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server",
     "build:css": "node-sass src/sass/ -o www/css --output-style=compressed --source-map=true",
+    "build:js2": "terser src/sw.js -o www/sw.min.js",
     "build:js": "terser src/app.js -o www/js/app.min.js -c -m --source-map \"root='http://localhost:3000', url='/js/app.min.js.map'\"",
     "build": "npm-run-all build:*",
     "test": "echo \"Error: no test specified\" && exit 1"
