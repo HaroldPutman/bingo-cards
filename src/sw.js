@@ -2,6 +2,7 @@ const CACHE_NAME = 'bingo-card-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
+  '/manifest.json',
   '/film-tropes.json',
   '/css/app.css',
   '/css/themes/default.css',
