@@ -192,19 +192,19 @@ function fillCells(content) {
 
 /**
  * Loads content from the specified file to fill the board.
- * @param {String} cluefile URL of the JSON clue file.
+ * @param {String} tropeDefinitions URL of the JSON trope file.
  */
-function loadBoard(cluefile) {
+function loadBoard(tropeDefinitions) {
   req=new XMLHttpRequest();
-  req.open("GET", cluefile ,true);
+  req.open("GET", tropeDefinitions, true);
   req.overrideMimeType("application/json");
   req.send();
   req.onload = function onLoad() {
-    const clues = JSON.parse(req.responseText);
-    shuffle(clues);
-    clues[12] = 'FREE';
-    trackEvent('load', { value: cluefile });
-    fillCells(clues.map((text) => {
+    const tropes = JSON.parse(req.responseText);
+    shuffle(tropes);
+    tropes[12] = 'FREE';
+    trackEvent('load', { value: tropeDefinitions });
+    fillCells(tropes.map((text) => {
       return {
         t: text,
         m: false
@@ -215,10 +215,10 @@ function loadBoard(cluefile) {
 
 /**
  * Pull text into the cells, either from Saved data or from
- * a clue file.
- * @param {String} cluefile URL JSON file to get new clues.
+ * a trope file.
+ * @param {String} tropeDefinitions URL JSON file to get new tropes.
  */
-function populateBoard(cluefile) {
+function populateBoard(tropeDefinitions) {
   let age = 0;
   const saved = localStorage.getItem('saved');
   if (saved) {
@@ -226,7 +226,7 @@ function populateBoard(cluefile) {
     age = Math.floor((Date.now() - savedAt) / 1000);
   }
   if (!saved || (age > 7200)) {
-    loadBoard(cluefile);
+    loadBoard(tropeDefinitions);
   } else {
     trackEvent('restore', { value: age });
     fillCells(JSON.parse(saved));
@@ -239,19 +239,19 @@ function populateBoard(cluefile) {
  */
 function ready() {
   const searchParams = new URLSearchParams(window.location.search);
-  let cluefile = 'film-tropes.json'
-  if (searchParams.has('clues')) {
-    cluefile = searchParams.get('clues');
+  let tropeDefinitions = 'film-tropes.json'
+  if (searchParams.has('tropes')) {
+    tropeDefinitions = searchParams.get('tropes');
   }
   const board = document.querySelector('.board');
   buildEmptyBoard(board);
-  populateBoard(cluefile);
+  populateBoard(tropeDefinitions);
   buildHeading();
   const resetButton = document.querySelector('.controls .reset');
   resetButton.addEventListener('click', (event)=> {
     trackEvent('reset', { event_category: 'user' });
     clearBingos();
-    loadBoard(cluefile);
+    loadBoard(tropeDefinitions);
   })
   window.addEventListener('unload', (event) => {
     saveBoard();
