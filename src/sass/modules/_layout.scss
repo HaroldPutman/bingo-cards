@@ -18,15 +18,38 @@
   grid-auto-rows: 1fr;
 
   > div {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-  }
 
-  .marked {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    & > div {
+      z-index: 10;
+    }
+
+    img {
+      display: none;
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      position: absolute;
+      top: 10%;
+      left: 10%;
+    }
+
+    &.marked img.daub {
+      display: block;
+    }
+
+    &.bingo img.daub2 {
+      display: block;
+    }
+  }
+}
+
+@media print {
+  .controls {
+    display: none;
   }
 }

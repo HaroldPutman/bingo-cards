@@ -156,9 +156,6 @@ function clickCell(event) {
     });
   }
   const bingos = checkForBingo();
-  const rect = event.target.getBoundingClientRect();
-  const offset = (event.clientX - rect.left) / rect.width;
-  this.style.backgroundPositionX = (offset * 100)+'%';
 }
 
 /**
@@ -170,6 +167,14 @@ function buildEmptyBoard(board) {
     const cell = document.createElement('div');
     const div = document.createElement('div');
     cell.appendChild(div);
+    const bg = document.createElement('img');
+    bg.setAttribute('src', '/images/daub.jpg');
+    bg.setAttribute('class', 'daub');
+    cell.appendChild(bg);
+    const bg2 = document.createElement('img');
+    bg2.setAttribute('src', '/images/daub2.jpg');
+    bg2.setAttribute('class', 'daub2');
+    cell.appendChild(bg2);
     cell.addEventListener('click', clickCell);
     board.appendChild(cell);
   }
