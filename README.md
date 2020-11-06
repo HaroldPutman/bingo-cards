@@ -10,11 +10,12 @@ It is easily extended to other domains by adding new prompts.
 * Clone the repo and install it.
 
 ```sh
-git clone git@github.com:HaroldPutman/bingo-cards.git
+git clone https://github.com/HaroldPutman/bingo-cards.git
+cd bingo-cards
 npm install
 ```
 
-* Start the local server with `npm start`.
+* Build the application with `npm run build` before starting with `npm start`
 * Visit [localhost:3000](http://localhost:3000).
 
 ### Setting up CircleCI
