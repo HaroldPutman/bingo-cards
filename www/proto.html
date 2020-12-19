@@ -1,0 +1,250 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <style type="text/css">
+  .board {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1px;
+	grid-template-rows: repeat(5, 6em);
+}
+.board > div {
+  position: relative;
+  border: 1px solid black;
+  padding: 1px;
+}
+
+.board > .c3 {
+    grid-row-start: 3;
+    grid-column-start: 3;
+}
+
+.board > .c4 {
+    grid-row-start: 3;
+    grid-column-start: 4;
+}
+
+.board input[type=checkbox] {
+  display: none;
+}
+
+.board div label {
+  display: flex;
+  user-select: none;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  text-align:center;
+  z-index:100;
+  width:calc(100% - 2px);
+  height: 100%;
+}
+
+.daub {
+  display: none;
+  position: relative;
+  top:10%;
+  left: 10%;
+  z-index: -100;
+  height:100%;
+}
+
+.daub img {
+  width:80%;
+  height:80%;
+}
+
+.board input[type=checkbox]:checked ~ .daub {
+  display: block;
+}
+
+.container {
+    max-width: 480px;
+}
+  </style>
+</head>
+<body>
+    <div class="container">
+        <div class="board">
+            <div>
+              <input type="checkbox" name="card" value="a1" id="a1">
+              <label for="a1"><span>Santa Claus</span></label>
+              <div class="daub">
+                <img alt="" src="https://via.placeholder.com/150">
+              </div>
+            </div>
+            <div>
+              <input type="checkbox" name="card" value="b1" id="b1">
+              <label for="b1"><span>Interrupted Kiss</span></label>
+              <div class="daub">
+                <img alt="" src="https://via.placeholder.com/150">
+              </div>
+            </div>
+            <div>
+              <input type="checkbox" name="card" value="c1" id="c1">
+              <label for="c1">Creepy money-obsessed boyfriend</label>
+              <div class="daub">
+                <img alt="" src="https://via.placeholder.com/150">
+              </div>
+            </div>
+            <div>
+              <input type="checkbox" name="card" value="d1" id="d1">
+              <label for="d1">Christmas Festival</label>
+              <div class="daub">
+                <img alt="" src="https://via.placeholder.com/150">
+              </div>
+            </div>
+            <div>
+              <input type="checkbox" name="card" value="e1" id="e1">
+              <label for="e1">And he's good with kids</label>
+              <div class="daub">
+                <img alt="" src="https://via.placeholder.com/150">
+              </div>
+            </div>
+            <div>
+              <input type="checkbox" name="card" value="a2" id="a2">
+              <label for="a2">Mis&#x00ad;understanding</label>
+              <div class="daub">
+                <img alt="" src="https://via.placeholder.com/150">
+              </div>
+            </div>
+            <div>
+              <input type="checkbox" name="card" value="b2" id="b2">
+              <label for="b2">Two hands on a hot drink</label>
+              <div class="daub">
+                <img alt="" src="https://via.placeholder.com/150">
+              </div>
+            </div>
+            <div>
+              <input type="checkbox" name="card" value="c2" id="c2">
+              <label for="c2">Big city ideas</label>
+              <div class="daub">
+                <img alt="" src="https://via.placeholder.com/150">
+              </div>
+            </div>
+            <div>
+              <input type="checkbox" name="card" value="d2" id="d2">
+              <label for="d2">Please stay</label>
+              <div class="daub">
+                <img alt="" src="https://via.placeholder.com/150">
+              </div>
+            </div>
+            <div>
+              <input type="checkbox" name="card" value="e2" id="e2">
+              <label for="e2">Obviously fake snow</label>
+              <div class="daub">
+                <img alt="" src="https://via.placeholder.com/150">
+              </div>
+            </div>
+            <div>
+                <input type="checkbox" name="card" value="a3" id="a3">
+                <label for="a3">Job Offer</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="card" value="b3" id="b3">
+                <label for="b3">Cute Dog</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div class="d3">
+                <input type="checkbox" name="card" value="d3" id="d3">
+                <label for="d3">Engagement or wedding</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="card" value="e3" id="e3">
+                <label for="e3">Excessive decoration</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="card" value="a4" id="a4">
+                <label for="a4">Using umbrella for snow</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="card" value="b4" id="b4">
+                <label for="b4">Single parent</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="card" value="c4" id="c4">
+                <label for="c4">Mistletoe</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="card" value="d4" id="d4">
+                <label for="d4">Recognizable actor from the 90's</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="card" value="e4" id="e4">
+                <label for="e4">Misunderstood royalty</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="card" value="a5" id="a5">
+                <label for="a5">Children's Charity</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="card" value="b5" id="b5">
+                <label for="b5">Christmas tree lighting</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="card" value="c5" id="c5">
+                <label for="c5">Holiday magic</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="card" value="d5" id="d5">
+                <label for="d5">Hanging Christmas decorations</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div>
+                <input type="checkbox" name="card" value="e5" id="e5">
+                <label for="e5">Life decision based on brief relationship</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+              <div class="c3">
+                <input type="checkbox" name="card" value="c3" id="c3">
+                <label for="c3">Free</label>
+                <div class="daub">
+                  <img alt="" src="https://via.placeholder.com/150">
+                </div>
+              </div>
+ </div>
+          
+    </div>
+</body>
